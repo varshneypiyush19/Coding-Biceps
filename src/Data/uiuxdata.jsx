@@ -3,6 +3,7 @@ import image2 from "../assets/uxui-img2.jpg"
 import image4 from "../assets/uxui-img3.jpg"
 import image5 from "../assets/uxui-img4.jpg"
 
+
 export const uiuxdata = [
   {
     id: 1,

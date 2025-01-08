@@ -1,12 +1,16 @@
 import React from "react";
-import herosectionimage from "../assets/herosectionimage.png";
+import herosectionimage from "../../assets/digitalmarketingimage.jpg";
 import { FaChevronDown } from "react-icons/fa";
-import UiuxmainSection from "./UiuxmainSection";
 import { NavLink } from "react-router-dom";
-const UiUxSection = () => {
+import MainUiSection from "./MainUiSection";
+import {uiuxdata} from "../../Data/digitalmarketingdata"
+import { FaArrowPointer } from "react-icons/fa6";
+import { FaDollarSign } from "react-icons/fa";
+import { IoChatbubbles } from "react-icons/io5";
+const DigitalMarketing = () => {
     const menuItems = [
         'Strategy',
-        'Technology',
+        'UI / UX',
         'Content',
         'Design',
         'Search',
@@ -15,7 +19,7 @@ const UiUxSection = () => {
         'Maintenance',
         'Inbound Marketing',
       ];
-  return (
+    return (
     <div className="w-full h-auto ">
       {/* Hero Section */}
       <div
@@ -23,35 +27,28 @@ const UiUxSection = () => {
         style={{ backgroundImage: `url(${herosectionimage})` }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">UI/UX</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Digital Marketing</h1>
           <div className="absolute bottom-10 animate-bounce">
             <FaChevronDown size={30} />
           </div>
         </div>
       </div>
-
+    
       {/* Text Section */}
-      <div className="w-full  text-white lg:h-[50vh] h-auto bg-blue-200 flex items-center justify-center py-8">
+      <div className="w-full  text-white  pb-20 h-auto bg-blue-200 flex items-center justify-center py-8">
         <div className="w-10/12  md:w-8/12 lg:w-full h-full flex items-center flex-col text-center">
-          <div>
+          <div className="w-11/12">
             <p className="text-xl md:text-2xl font-bold mt-12">
-              <span className="font-bold text-4xl md:text-6xl">H</span>aving a poorly designed, non-intuitive digital experience can be the breaking point for a potential
+              <span className="font-bold text-4xl md:text-6xl">T</span>he best way to unravel your website’s true potential is to enhance its discoverability. From increasing website visits, sessions and ultimately improving your ranking on search engine results page (SERP), our search marketing solutions ensure that your business is set apart from the crowd and can be easily found.
             </p>
-            <p className="text-xl md:text-2xl font-bold text-center mt-2">
-              customer.
-            </p>
-          </div>
-
-          <div className="mt-8 text-lg md:text-xl px-4">
-            <p>This is why it’s important to enhance user experience by working on the interface, usability, accessibility and aesthetics of your</p>
-            <p className="mt-3">digital assets. Our UI/UX experts study the logic behind a consumer’s digital journey and use modern design principles to enhance</p>
-            <p className="mt-2">their movement, every step of the way.</p>
           </div>
         </div>
       </div>
-
+    
       {/* UI/UX Main Section */}
-      <UiuxmainSection />
+      {/* <UiuxmainSection />  */}
+      {/* i create custom hook for not creating components like uiuxmain section again and again */}
+      <MainUiSection  data = {uiuxdata} icon1 = {FaArrowPointer} icon2={FaDollarSign} icon3 ={IoChatbubbles}/>
       <div className="w-full flex items-center justify-center h-[30vh]">
       <div className="flex flex-wrap justify-center w-[60vw]">
         {menuItems.map((item, index) => (
@@ -65,8 +62,7 @@ const UiUxSection = () => {
         ))}
       </div>
     </div>
-    </div>
-  );
-};
+    </div>)
+}
 
-export default UiUxSection;
+export default DigitalMarketing
