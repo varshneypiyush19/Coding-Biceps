@@ -5,6 +5,7 @@ import {
   FaTwitter,
   FaLinkedinIn,
   FaYoutube,
+  FaChevronUp,
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -18,7 +19,7 @@ const Footer = () => {
           CONTACT
         </button>
       </div>
-      <footer className="bg-gray-100 py-6">
+      <footer className=" relative bg-gray-100 py-6">
         <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between px-4 lg:px-20">
           {/* Left Section - Logo */}
           <div className="flex flex-col items-center lg:items-start space-y-4 lg:space-y-0 lg:flex-row lg:space-x-8">
@@ -76,6 +77,9 @@ const Footer = () => {
               STAY CONNECTED WITH OUR SOCIAL NETWORK
             </span>
           </div>
+        </div>
+        <div className="absolute bottom-10 right-5  animate-bounce text-richblue-100">
+          <FaChevronUp size={40} />
         </div>
       </footer>
     </div>

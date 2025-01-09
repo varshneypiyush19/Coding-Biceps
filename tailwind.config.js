@@ -1,39 +1,39 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       animation: {
-        ringShake: 'ringShake 0.2s ease-in-out infinite',
+        ringShake: "ringShake 0.2s ease-in-out infinite",
       },
       keyframes: {
         ringShake: {
-          '0%, 100%': { transform: 'rotate(0deg)' },
-          '25%': { transform: 'rotate(5deg)' },
-          '75%': { transform: 'rotate(-5deg)' },
+          "0%, 100%": { transform: "rotate(0deg)" },
+          "25%": { transform: "rotate(5deg)" },
+          "75%": { transform: "rotate(-5deg)" },
         },
       },
     },
     colors: {
       white: "#fff",
       black: "#000",
+      yellow: "#dc2626",
       transparent: "#ffffff00",
-  richgrey : {
-  5: "#F1F1F1",
-  25: "#D6D6D6",
-  50: "#B8B8B8",
-  100: "#A0A0A0",
-  200: "#888888",
-  300: "#707070",
-  400: "#585858",
-  500: "#404040",
-  600: "#303030",
-  700: "#202020",
-  800: "#101010",
-  900: "#080808",
-},
+      gray: "#F9FAFB",
+      richgrey: {
+        5: "#F1F1F1",
+        25: "#D6D6D6",
+        50: "#B8B8B8",
+        100: "#A0A0A0",
+        200: "#888888",
+        300: "#707070",
+        400: "#585858",
+        500: "#404040",
+        600: "#303030",
+        700: "#202020",
+        800: "#101010",
+        900: "#080808",
+      },
       richblack: {
         5: "#F1F2FF",
         25: "#DBDDEA",
@@ -75,8 +75,8 @@ module.exports = {
         700: "#053B48",
         800: "#022B32",
         900: "#001B1D",
-      }, 
+      },
     },
   },
   plugins: [],
-}
+};

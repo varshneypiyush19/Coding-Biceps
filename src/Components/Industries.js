@@ -10,6 +10,7 @@ import { FaRegHandshake } from "react-icons/fa6";
 import { FaTruck } from "react-icons/fa6";
 import Industry from "./Industry";
 import OurClients from "./OurClients";
+import Reviews from "./Reviews";
 // import ClientsTestimony from "./ClientsTestimony";
 
 const Industries = () => {
@@ -56,6 +57,7 @@ const Industries = () => {
       </div>
 
       <OurClients />
+      <Reviews />
       {/* <ClientsTestimony /> */}
     </div>
   );
