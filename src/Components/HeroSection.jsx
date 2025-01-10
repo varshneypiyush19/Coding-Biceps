@@ -16,11 +16,11 @@ const HeroSection = () => {
 
   return (
     <div
-      className="relative h-[50vh] bg-cover bg-center z-0"
+      className="relative h-[70vh] bg-cover bg-center z-0"
       style={{ backgroundImage: `url(${herosectionimage})` }}
     >
-      <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white">
-        <h1 className="text-4xl font-bold mb-4">Why Coding Biceps?</h1>
+      <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-around items-center text-white">
+        <h1 className="text-6xl font-bold mb-4">Why Coding Biceps?</h1>
         <div className="bg-richblue-100 px-4 py-2 rounded-full text-lg font-semibold">
           {texts[currentTextIndex]}
         </div>

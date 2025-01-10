@@ -10,7 +10,7 @@ import {
 
 const Footer = () => {
   return (
-    <div>
+    <div  className="mt-10">
       <div className="flex flex-col items-center p-10 bg-richblue-100 text-white justify-center">
         <h1 className="md:text-5xl font-bold  text-2xl sm:text-4xl pb-4 sm:pb-10">
           LET'S WORK TOGETHER!
