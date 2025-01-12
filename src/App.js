@@ -12,7 +12,7 @@ import Footer from "./Components/Footer.js";
 import Clientspage from "./pages/Clientspage.js";
 import Team from "./pages/Team.js";
 import GetinTouch from "./Components/GetinTouch.jsx";
-
+import QualityAssurance from "./Components/Services/QualityAssurance.jsx";
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -33,6 +33,7 @@ function App() {
           <Route path="/digital-marketing" element={<DigitalMarketing />}></Route>
           <Route path="/clients" element={<Clientspage />}></Route>
           <Route path="/team" element={<Team />}></Route>
+          <Route path="/quality-assurance" element = {<QualityAssurance/>}></Route>
         </Routes>
         <Footer />
       </div>
