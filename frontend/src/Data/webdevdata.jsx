@@ -20,7 +20,7 @@ export const uiuxdata = [
     links:"Explore"
   },
   {
-    id: 8,
+    id: 3,
     image: image1,
     heading:"Angular js Development",
     // description:"We believe in pushing the envelope to deliver effective consumer driven solutions that are aimed at growing your business. By tailor making your e-commerce site, we ensure that it suits varying consumer environments, devices and operating systems - such that the final product is responsive, reliable and experience oriented.",

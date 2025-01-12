@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import { NavLink } from 'react-router-dom';
+import GetinTouch from './GetinTouch';
 
-const Navbar = () => {
+const Navbar = ({toggleModal}) => {
     const [shake, setShake] = useState(false);
     const [openDropdown, setOpenDropdown] = useState(null);
     const [toggleMenu, setToggleMenu] = useState(false);
@@ -25,7 +26,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className='w-full z-10 flex justify-center items-center'>
+        <div className='w-full z-10 flex justify-center items-center '>
             <div className="w-11/12 flex items-center justify-between z-10 p-4 relative">
                 <div className="flex items-center">
                     <div>
@@ -78,23 +79,24 @@ const Navbar = () => {
                         <IoIosArrowDown />
                         {openDropdown === 'portfolio' && (
                             <ul className="absolute top-full  shadow-lg rounded-md mt-2 p-2 bg-white">
-                                <li><NavLink to="/mobile-apps" className="p-2 hover:text-blue-100" onClick={closeMenu}>Mobile Apps</NavLink></li>
+                                {/* <li><NavLink to="/mobile-apps" className="p-2 hover:text-blue-100" onClick={closeMenu}>Mobile Apps</NavLink></li> */}
                                 <li><NavLink to="/websites" className="p-2 hover:text-blue-100" onClick={closeMenu}>Websites</NavLink></li>
                             </ul>
                         )}
                     </li>
-                    <li>
+                    {/* <li>
                         <NavLink to="/career" className="cursor-pointer hover:text-blue-100 font-semibold" onClick={closeMenu}>
                             Career
                         </NavLink>
-                    </li>
+                    </li> */}
                     <li>
                         <NavLink to="/contact" className="cursor-pointer hover:text-blue-100 font-semibold" onClick={closeMenu}>
                             Contact
                         </NavLink>
                     </li>
                 </ul>
-                <button
+                <button 
+                onClick={toggleModal}
                     className={`rounded-md border-2 border-blue-500 hidden lg:flex text-blue-500 font-bold py-2 px-4 transition-transform ${shake ? 'animate-ringShake' : ''}`}
                 >
                     GET IN TOUCH
@@ -152,17 +154,17 @@ const Navbar = () => {
                         <div>
                             {openDropdown === 'Portfolio' && (
                                 <ul className="shadow-lg rounded-md p-2 mt-2 bg-white">
-                                    <li><NavLink to="/mobile-apps" className="p-2 hover:text-blue-100" onClick={closeMenu}>Mobile Apps</NavLink></li>
+                                    {/* <li><NavLink to="/mobile-apps" className="p-2 hover:text-blue-100" onClick={closeMenu}>Mobile Apps</NavLink></li> */}
                                     <li><NavLink to="/websites" className="p-2 hover:text-blue-100" onClick={closeMenu}>Websites</NavLink></li>
                                 </ul>
                             )}
                         </div>
                     </li>
-                    <li>
+                    {/* <li>
                         <NavLink to="/career" className="cursor-pointer hover:text-blue-100 font-semibold" onClick={closeMenu}>
                             Career
                         </NavLink>
-                    </li>
+                    </li> */}
                     <li>
                         <NavLink to="/contact" className="cursor-pointer hover:text-blue-100 font-semibold" onClick={closeMenu}>
                             Contact

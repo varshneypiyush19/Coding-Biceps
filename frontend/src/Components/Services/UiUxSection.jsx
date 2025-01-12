@@ -21,7 +21,7 @@ const UiUxSection = () => {
     <div className="w-full h-auto ">
       {/* Hero Section */}
       <div
-        className="relative h-[50vh] md:h-[60vh] bg-cover bg-center z-0"
+        className="relative h-[70vh] md:h-[60vh] bg-cover bg-center z-0"
         style={{ backgroundImage: `url(${herosectionimage})` }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white">
@@ -56,8 +56,8 @@ const UiUxSection = () => {
       {/* <UiuxmainSection />  */}
       {/* i create custom hook for not creating components like uiuxmain section again and again */}
       <MainUiSection  data = {uiuxdata} icon1 = {FaMobileScreen} icon2={FaGears}/>
-      <div className="w-full flex items-center justify-center h-[30vh]">
-      <div className="flex flex-wrap justify-center w-[60vw]">
+      <div className="w-full flex items-center justify-center h-auto mt-10 mb-10">
+      <div className="flex flex-wrap justify-center w-[60vw] ">
         {menuItems.map((item, index) => (
           <NavLink
             key={index}
