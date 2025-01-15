@@ -13,6 +13,9 @@ import Clientspage from "./pages/Clientspage.js";
 import Team from "./pages/Team.js";
 import GetinTouch from "./Components/GetinTouch.jsx";
 import QualityAssurance from "./Components/Services/QualityAssurance.jsx";
+import AskDoubt from "./Components/AskDoubt.js";
+// import Register from "./pages/Register.js";
+// import Login from "./pages/Login.js";
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -22,7 +25,11 @@ function App() {
 
   return (
     <div className="relative">
-      <div className={`transition-all duration-300 ${isModalOpen ? 'blur-md fixed' : ''}`}>
+      <div
+        className={`transition-all duration-300 ${
+          isModalOpen ? "blur-md fixed" : ""
+        }`}
+      >
         <Navbar toggleModal={toggleModal} />
         <Routes>
           <Route path="/" element={<Home />}></Route>
@@ -30,10 +37,19 @@ function App() {
           <Route path="/contact" element={<Contactus />}></Route>
           <Route path="/technology" element={<Technology />}></Route>
           <Route path="/web-development" element={<WebDevelopment />}></Route>
-          <Route path="/digital-marketing" element={<DigitalMarketing />}></Route>
+          <Route
+            path="/digital-marketing"
+            element={<DigitalMarketing />}
+          ></Route>
           <Route path="/clients" element={<Clientspage />}></Route>
           <Route path="/team" element={<Team />}></Route>
-          <Route path="/quality-assurance" element = {<QualityAssurance/>}></Route>
+          <Route
+            path="/quality-assurance"
+            element={<QualityAssurance />}
+          ></Route>
+          <Route path="/doubt" element={<AskDoubt />}></Route>
+          {/* <Route path="/login" element={<Login />}></Route> */}
+          {/* <Route path="/register" element={<Register />}></Route> */}
         </Routes>
         <Footer />
       </div>
