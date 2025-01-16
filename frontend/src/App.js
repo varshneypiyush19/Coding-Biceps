@@ -14,6 +14,8 @@ import Team from "./pages/Team.js";
 import GetinTouch from "./Components/GetinTouch.jsx";
 import QualityAssurance from "./Components/Services/QualityAssurance.jsx";
 import AskDoubt from "./Components/AskDoubt.js";
+import Signup from "./Components/users/Signup.jsx";
+import LoginForm from "./Components/users/Login.jsx";
 // import Register from "./pages/Register.js";
 // import Login from "./pages/Login.js";
 function App() {
@@ -50,6 +52,9 @@ function App() {
           <Route path="/doubt" element={<AskDoubt />}></Route>
           {/* <Route path="/login" element={<Login />}></Route> */}
           {/* <Route path="/register" element={<Register />}></Route> */}
+          <Route path="/signup" element = {<Signup/>}></Route>
+          <Route path="/login" element = {<LoginForm/>}></Route>
+
         </Routes>
         <Footer />
       </div>
