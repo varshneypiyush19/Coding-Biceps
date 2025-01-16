@@ -3,6 +3,7 @@ const cors = require("cors"); // Import cors
 require("dotenv").config();
 
 const contactusroute = require("./routes/Contactus")
+const userRoutes =  require("./routes/userRoutes");
 
 const app = express();
 
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cors()); 
 app.use('/api/v1' , contactusroute);
+app.use('/api/v1' , userRoutes);
 
 const dbConnect = require("./config/database");
 dbConnect();
