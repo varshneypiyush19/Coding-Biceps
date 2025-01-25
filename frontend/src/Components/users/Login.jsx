@@ -32,12 +32,13 @@ const LoginForm = () => {
         "http://localhost:4000/api/v1/login",
         formData
       );
-      //  console.log(response.data.token);
-      const userId = response?.data;
+      //  console.log(response);
+      const userId = response?.data.user.image;
+      console.log(userId);
       dispatch(loginSuccess(userId));
       dispatch(usertoken(response?.data?.token));
 
-      dispatch(loginSuccess(userId));
+      // dispatch(loginSuccess(userId));
       dispatch(login(true));
       toast.success("Login Successfully");
       navigate("/");

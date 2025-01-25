@@ -7,6 +7,7 @@ import { logout } from "../slice/auth";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Button from "./common/Button";
+import ProfileDropDown from "./ProfileDropDown";
 // import GetinTouch from "./GetinTouch";
 
 const Navbar = ({ toggleModal }) => {
@@ -28,7 +29,6 @@ const Navbar = ({ toggleModal }) => {
     return () => clearInterval(interval);
   }, []);
   const handleLogout = async () => {
-  
     try {
       await dispatch(logout()); // Ensure logout completes before navigating
       toast.success("Logout successfully");
@@ -56,20 +56,7 @@ const Navbar = ({ toggleModal }) => {
             {toggleMenu ? <FaTimes size={20} /> : <FaBars size={20} />}
           </button>
         </div>
-        {isLoggedIn ? (
-          <div className="hidden md:block">
-            <Button onClick={handleLogout}>Logout</Button>
-          </div>
-        ) : (
-          <div className="hidden lg:flex gap-x-4 items-center justify-center">
-            <Button linkto={"/login"} onClick={closeMenu}>
-              Login
-            </Button>
-            <Button linkto={"/signup"} onClick={closeMenu}>
-              Signup
-            </Button>
-          </div>
-        )}
+        
         <ul className="lg:flex  lg:items-center  space-x-6 hidden text-richblack-900 relative">
           <li>
             <NavLink
@@ -257,6 +244,7 @@ const Navbar = ({ toggleModal }) => {
           </li>
 
         </ul>
+       
         <button
           onClick={toggleModal}
           className={`rounded-md border-2 border-blue-500 hidden lg:flex text-blue-500 font-bold py-2 px-4 transition-transform ${shake ? "animate-ringShake" : ""
@@ -264,6 +252,7 @@ const Navbar = ({ toggleModal }) => {
         >
           GET IN TOUCH
         </button>
+        <div className="hidden lg:flex"  >{<ProfileDropDown/>} </div>
       </div>
 
 
