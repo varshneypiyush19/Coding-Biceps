@@ -22,16 +22,16 @@ const AskDoubt = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            Pricing and Plans
+            Ask Doubt
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
+          {/* <p className="mt-4 text-lg text-gray-600">
             Choose the best plan that fits your needs. 1 doubt free in every
             plan!
-          </p>
+          </p> */}
         </div>
 
         {/* Toggle Button */}
-        <div className="flex justify-center mt-8">
+        {/* <div className="flex justify-center mt-8">
           <button
             className={`px-4 py-2 ${
               !isYearly ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-700"
@@ -50,9 +50,9 @@ const AskDoubt = () => {
           </button>
         </div>
 
-        {/* Pricing Cards */}
+        {/* Pricing Cards
         <div className="mt-12 grid gap-6 lg:grid-cols-3 sm:grid-cols-1">
-          {/* Student Plan */}
+          {/* Student Plan 
           <div className="bg-white shadow-lg rounded-lg p-6 text-center">
             <h3 className="text-xl font-semibold text-gray-800">Student</h3>
             <p className="text-4xl font-extrabold text-gray-900 mt-4">
@@ -71,7 +71,7 @@ const AskDoubt = () => {
             </ul>
           </div>
 
-          {/* Intern Plan */}
+          {/* Intern Plan 
           <div className="bg-white shadow-lg rounded-lg p-6 text-center border-2 border-blue-500">
             <h3 className="text-xl font-semibold text-gray-800">Intern</h3>
             <p className="text-4xl font-extrabold text-gray-900 mt-4">
@@ -90,7 +90,7 @@ const AskDoubt = () => {
             </ul>
           </div>
 
-          {/* Experienced Plan */}
+          {/* Experienced Plan 
           <div className="bg-white shadow-lg rounded-lg p-6 text-center">
             <h3 className="text-xl font-semibold text-gray-800">Experienced</h3>
             <p className="text-4xl font-extrabold text-gray-900 mt-4">
@@ -111,7 +111,7 @@ const AskDoubt = () => {
               <li>✔ Tailored for professionals</li>
             </ul>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

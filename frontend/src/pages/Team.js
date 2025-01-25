@@ -4,6 +4,8 @@ import { FaChevronDown } from "react-icons/fa";
 import image from "../assets/profile.png";
 import headerimage from "../assets/our-team-img.webp";
 import TeamMember from "../Components/TeamMember";
+import Clientspage from "./Clientspage";
+import Technology from "../Components/Services/Technology";
 
 const teamMembers = [
   {
@@ -58,6 +60,8 @@ const Team = () => {
   return (
     <div className="w-full">
       {/* Header Section */}
+      <Technology />
+      <Clientspage />
       <div className="relative flex flex-col items-center justify-center h-64 sm:h-80 md:h-96 lg:h-[28rem]">
         <img
           src={headerimage}

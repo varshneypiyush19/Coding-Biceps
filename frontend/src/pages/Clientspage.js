@@ -15,7 +15,7 @@ const Clientspage = () => {
           alt="Header"
           className="w-full h-full object-cover"
         />
-        <p className="absolute text-white font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+        <p className="absolute text-white pt-40 font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
           OUR CLIENTS
         </p>
         <div className="absolute bottom-4 animate-bounce text-white">

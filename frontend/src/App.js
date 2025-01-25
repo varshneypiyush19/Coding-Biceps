@@ -45,6 +45,7 @@ function App() {
           ></Route>
           <Route path="/clients" element={<Clientspage />}></Route>
           <Route path="/team" element={<Team />}></Route>
+          <Route path="/know-coding-biceps" element={<Team />}></Route>
           <Route
             path="/quality-assurance"
             element={<QualityAssurance />}
@@ -52,9 +53,8 @@ function App() {
           <Route path="/doubt" element={<AskDoubt />}></Route>
           {/* <Route path="/login" element={<Login />}></Route> */}
           {/* <Route path="/register" element={<Register />}></Route> */}
-          <Route path="/signup" element = {<Signup/>}></Route>
-          <Route path="/login" element = {<LoginForm/>}></Route>
-
+          <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/login" element={<LoginForm />}></Route>
         </Routes>
         <Footer />
       </div>

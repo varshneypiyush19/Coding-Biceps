@@ -56,7 +56,7 @@ const Navbar = ({ toggleModal }) => {
             {toggleMenu ? <FaTimes size={20} /> : <FaBars size={20} />}
           </button>
         </div>
-        
+
         <ul className="lg:flex  lg:items-center  space-x-6 hidden text-richblack-900 relative">
           <li>
             <NavLink
@@ -71,9 +71,20 @@ const Navbar = ({ toggleModal }) => {
             className="cursor-pointer flex items-center gap-x-1"
             onClick={() => toggleDropdown("Know AKS")}
           >
-            <span className="hover:text-blue-100 font-semibold">Know AKS</span>
-            <IoIosArrowDown />
-            {openDropdown === "Know AKS" && (
+            <span className="hover:text-blue-100 font-semibold">
+              <NavLink
+                // to="/about"
+                to="/know-coding-biceps"
+                // to="/team"
+                // to="/core-values"
+                className="p-2 hover:text-blue-100"
+                // onClick={closeMenu}
+              >
+                Know CB
+              </NavLink>
+            </span>
+            {/* <IoIosArrowDown /> */}
+            {/* {openDropdown === "Know AKS" && (
               <ul className="absolute top-full  shadow-lg rounded-md p-2 mt-2 bg-white">
                 <li>
                   <NavLink
@@ -112,7 +123,7 @@ const Navbar = ({ toggleModal }) => {
                   </NavLink>
                 </li>
               </ul>
-            )}
+            )} */}
           </li>
           <li
             className="cursor-pointer flex items-center gap-x-1"
@@ -230,8 +241,9 @@ const Navbar = ({ toggleModal }) => {
 
           <li>
             <button
-              className={`rounded-md border-2 border-blue-500 hover:bg-richblue-100 hover:text-white  hidden lg:flex text-blue-500 font-bold py-1 px-2 transition-transform ${shake ? "animate-ringShake" : ""
-                }`}
+              className={`rounded-md border-2 border-blue-500 hover:bg-richblue-100 hover:text-white  hidden lg:flex text-blue-500 font-bold py-1 px-2 transition-transform ${
+                shake ? "animate-ringShake" : ""
+              }`}
             >
               <NavLink
                 to="/doubt"
@@ -242,24 +254,24 @@ const Navbar = ({ toggleModal }) => {
               </NavLink>
             </button>
           </li>
-
         </ul>
-       
+
         <button
           onClick={toggleModal}
-          className={`rounded-md border-2 border-blue-500 hidden lg:flex text-blue-500 font-bold py-2 px-4 transition-transform ${shake ? "animate-ringShake" : ""
-            }`}
+          className={`rounded-md border-2 border-blue-500 hidden lg:flex text-blue-500 font-bold py-2 px-4 transition-transform ${
+            shake ? "animate-ringShake" : ""
+          }`}
         >
           GET IN TOUCH
         </button>
-        <div className="hidden lg:flex"  >{<ProfileDropDown/>} </div>
+        <div className="hidden lg:flex">{<ProfileDropDown />} </div>
       </div>
-
 
       {/* Responsive part mobile version */}
       <div
-        className={`transition-all z-10 duration-1000 linear ${toggleMenu ? "max-h-screen py-2" : "max-h-0 py-0"
-          } overflow-hidden lg:hidden absolute top-20 shadow-lg w-full bg-blue-25`}
+        className={`transition-all z-10 duration-1000 linear ${
+          toggleMenu ? "max-h-screen py-2" : "max-h-0 py-0"
+        } overflow-hidden lg:hidden absolute top-20 shadow-lg w-full bg-blue-25`}
       >
         <ul className="space-y-4 px-4">
           <li>
@@ -449,35 +461,37 @@ const Navbar = ({ toggleModal }) => {
             </NavLink>
           </li>
 
-              <li>
+          <li>
             <button
-              className={` rounded-md border-2 border-blue-500 hover:bg-richblue-100 hover:text-white   lg:flex text-blue-500 font-bold py-1 px-2  transition-transform ${shake ? "animate-ringShake" : ""
-                }`}
+              className={` rounded-md border-2 border-blue-500 hover:bg-richblue-100 hover:text-white   lg:flex text-blue-500 font-bold py-1 px-2  transition-transform ${
+                shake ? "animate-ringShake" : ""
+              }`}
             >
               <NavLink
                 to="/doubt"
                 className="cursor-pointer  font-semibold"
-                onClick={closeMenu} >
+                onClick={closeMenu}
+              >
                 Ask doubt
               </NavLink>
             </button>
 
             {isLoggedIn ? (
+              <div>
+                <Button onClick={handleLogout}>Logout</Button>
+              </div>
+            ) : (
+              <div className=" flex my-5 gap-x-4 items-center">
                 <div>
-                  <Button onClick={handleLogout}>Logout</Button>
-                </div>
-              ) : (
-                <div className=" flex my-5 gap-x-4 items-center">
-                  <div>
-                    <Button linkto={"/login"} onClick={closeMenu}>
-                      Login
-                    </Button>
-                  </div>
-                  <Button linkto={"/signup"} onClick={closeMenu}>
-                    Signup
+                  <Button linkto={"/login"} onClick={closeMenu}>
+                    Login
                   </Button>
                 </div>
-              )}
+                <Button linkto={"/signup"} onClick={closeMenu}>
+                  Signup
+                </Button>
+              </div>
+            )}
           </li>
         </ul>
       </div>
