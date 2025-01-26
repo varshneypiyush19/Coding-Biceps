@@ -4,19 +4,22 @@ import { IoIosArrowDown } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../slice/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Button from "./common/Button";
 import ProfileDropDown from "./ProfileDropDown";
-// import GetinTouch from "./GetinTouch";
+import Services from "./Services"; 
+import ServicesCardsComponents from "./ServicesCardsComponents";
 
 const Navbar = ({ toggleModal }) => {
   const [shake, setShake] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [showServices, setShowServices] = useState(false); // State to toggle services
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const closeMenu = () => {
     setToggleMenu(false);
   };
@@ -28,28 +31,29 @@ const Navbar = ({ toggleModal }) => {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+
   const handleLogout = async () => {
     try {
-      await dispatch(logout()); // Ensure logout completes before navigating
+      await dispatch(logout());
       toast.success("Logout successfully");
-      navigate("/"); // Redirect to the home page
+      navigate("/");
     } catch (error) {
       toast.error("Logout failed");
     }
   };
+
   const toggleDropdown = (dropdown) => {
     setOpenDropdown(openDropdown === dropdown ? null : dropdown);
   };
 
   return (
-    <div className="w-full z-10 flex justify-center items-center ">
+    <div className="w-full z-10 flex justify-center items-center">
       <div className="w-11/12 flex items-center justify-between z-10 p-4 relative">
         <div className="flex items-center">
-          <div>
-            <h1 className="text-primary font-bold text-xl">Coding</h1>
-            <p className="text-richblack-700 text-xl">Biceps</p>
-          </div>
+          <h1 className="text-primary font-bold text-xl">Coding</h1>
+          <p className="text-richblack-700 text-xl">Biceps</p>
         </div>
+
         {/* Hamburger Menu */}
         <div className="lg:hidden absolute right-6">
           <button onClick={() => setToggleMenu(!toggleMenu)}>
@@ -57,7 +61,7 @@ const Navbar = ({ toggleModal }) => {
           </button>
         </div>
 
-        <ul className="lg:flex  lg:items-center  space-x-6 hidden text-richblack-900 relative">
+        <ul className="lg:flex lg:items-center space-x-6 hidden text-richblack-900 relative">
           <li>
             <NavLink
               to="/"
@@ -73,140 +77,19 @@ const Navbar = ({ toggleModal }) => {
           >
             <span className="hover:text-blue-100 font-semibold">
               <NavLink
-                // to="/about"
                 to="/know-coding-biceps"
-                // to="/team"
-                // to="/core-values"
                 className="p-2 hover:text-blue-100"
-                // onClick={closeMenu}
               >
                 Know CB
               </NavLink>
             </span>
-            {/* <IoIosArrowDown /> */}
-            {/* {openDropdown === "Know AKS" && (
-              <ul className="absolute top-full  shadow-lg rounded-md p-2 mt-2 bg-white">
-                <li>
-                  <NavLink
-                    to="/about"
-                    className="p-2 hover:text-blue-100"
-                    onClick={closeMenu}
-                  >
-                    About
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/core-values"
-                    className="p-2 hover:text-blue-100"
-                    onClick={closeMenu}
-                  >
-                    Core Values
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/clients"
-                    className="p-2 hover:text-blue-100"
-                    onClick={closeMenu}
-                  >
-                    Clients
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/team"
-                    className="p-2 hover:text-blue-100"
-                    onClick={closeMenu}
-                  >
-                    Team
-                  </NavLink>
-                </li>
-              </ul>
-            )} */}
           </li>
           <li
             className="cursor-pointer flex items-center gap-x-1"
-            onClick={() => toggleDropdown("Services")}
+            onClick={() => setShowServices(!showServices)} // Toggle services
           >
             <span className="hover:text-blue-100 font-semibold">Services</span>
             <IoIosArrowDown />
-            {openDropdown === "Services" && (
-              <ul className="absolute top-full  shadow-lg rounded-md mt-2 p-2 bg-white">
-                <li>
-                  <NavLink
-                    to="/ui-ux"
-                    className="p-2 hover:text-blue-100"
-                    onClick={closeMenu}
-                  >
-                    UI/UX
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/technology"
-                    className="p-2 hover:text-blue-100"
-                    onClick={closeMenu}
-                  >
-                    Technology
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/app-development"
-                    className="p-2 hover:text-blue-100"
-                    onClick={closeMenu}
-                  >
-                    App Development
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/web-development"
-                    className="p-2 hover:text-blue-100"
-                    onClick={closeMenu}
-                  >
-                    Web Development
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/digital-marketing"
-                    className="p-2 hover:text-blue-100"
-                    onClick={closeMenu}
-                  >
-                    Digital Marketing
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/quality-assurance"
-                    className="p-2 hover:text-blue-100"
-                    onClick={closeMenu}
-                  >
-                    Quality Assurance
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/dedicated-resources"
-                    className="p-2 hover:text-blue-100"
-                    onClick={closeMenu}
-                  >
-                    Dedicated Resources
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/ecommerce"
-                    className="p-2 hover:text-blue-100"
-                    onClick={closeMenu}
-                  >
-                    ECommerce
-                  </NavLink>
-                </li>
-              </ul>
-            )}
           </li>
           <li
             className="cursor-pointer flex items-center gap-x-1"
@@ -215,8 +98,7 @@ const Navbar = ({ toggleModal }) => {
             <span className="hover:text-blue-100 font-semibold">Portfolio</span>
             <IoIosArrowDown />
             {openDropdown === "portfolio" && (
-              <ul className="absolute top-full  shadow-lg rounded-md mt-2 p-2 bg-white">
-                {/* <li><NavLink to="/mobile-apps" className="p-2 hover:text-blue-100" onClick={closeMenu}>Mobile Apps</NavLink></li> */}
+              <ul className="absolute top-full shadow-lg rounded-md mt-2 p-2 bg-white">
                 <li>
                   <NavLink
                     to="/websites"
@@ -241,13 +123,13 @@ const Navbar = ({ toggleModal }) => {
 
           <li>
             <button
-              className={`rounded-md border-2 border-blue-500 hover:bg-richblue-100 hover:text-white  hidden lg:flex text-blue-500 font-bold py-1 px-2 transition-transform ${
+              className={`rounded-md border-2 border-blue-500 hover:bg-richblue-100 hover:text-white hidden lg:flex text-blue-500 font-bold py-1 px-2 transition-transform ${
                 shake ? "animate-ringShake" : ""
               }`}
             >
               <NavLink
                 to="/doubt"
-                className="cursor-pointer  font-semibold"
+                className="cursor-pointer font-semibold"
                 onClick={closeMenu}
               >
                 Ask doubt
@@ -267,11 +149,24 @@ const Navbar = ({ toggleModal }) => {
         <div className="hidden lg:flex">{<ProfileDropDown />} </div>
       </div>
 
+      {/* Services Page */}
+      {showServices && (
+        <div className="absolute top-16 w-[90%] h-[80vh] rounded-md bg-white z-20 overflow-auto transition-all duration-1000 linear">
+          <button
+            className="absolute top-4 right-4 text-2xl"
+            onClick={() => setShowServices(false)}
+          >
+            <FaTimes />
+          </button>
+          <ServicesCardsComponents onClose={() => setShowServices(false)} />
+        </div>
+      )}
+
       {/* Responsive part mobile version */}
       <div
         className={`transition-all z-10 duration-1000 linear ${
           toggleMenu ? "max-h-screen py-2" : "max-h-0 py-0"
-        } overflow-hidden lg:hidden absolute top-20 shadow-lg w-full bg-blue-25`}
+        } overflow-hidden lg:hidden absolute top-[3.7em] shadow-lg w-full bg-blue-25`}
       >
         <ul className="space-y-4 px-4">
           <li>
@@ -293,7 +188,7 @@ const Navbar = ({ toggleModal }) => {
             </div>
             <div>
               {openDropdown === "Know AKS" && (
-                <ul className="shadow-lg  rounded-md p-2 mt-2 bg-white">
+                <ul className="shadow-lg rounded-md p-2 mt-2 bg-white">
                   <li>
                     <NavLink
                       to="/about"
@@ -432,7 +327,6 @@ const Navbar = ({ toggleModal }) => {
             <div>
               {openDropdown === "Portfolio" && (
                 <ul className="shadow-lg rounded-md p-2 mt-2 bg-white">
-                  {/* <li><NavLink to="/mobile-apps" className="p-2 hover:text-blue-100" onClick={closeMenu}>Mobile Apps</NavLink></li> */}
                   <li>
                     <NavLink
                       to="/websites"
@@ -446,11 +340,6 @@ const Navbar = ({ toggleModal }) => {
               )}
             </div>
           </li>
-          {/* <li>
-                        <NavLink to="/career" className="cursor-pointer hover:text-blue-100 font-semibold" onClick={closeMenu}>
-                            Career
-                        </NavLink>
-                    </li> */}
           <li>
             <NavLink
               to="/contact"
@@ -463,13 +352,13 @@ const Navbar = ({ toggleModal }) => {
 
           <li>
             <button
-              className={` rounded-md border-2 border-blue-500 hover:bg-richblue-100 hover:text-white   lg:flex text-blue-500 font-bold py-1 px-2  transition-transform ${
+              className={`rounded-md border-2 border-blue-500 hover:bg-richblue-100 hover:text-white lg:flex text-blue-500 font-bold py-1 px-2 transition-transform ${
                 shake ? "animate-ringShake" : ""
               }`}
             >
               <NavLink
                 to="/doubt"
-                className="cursor-pointer  font-semibold"
+                className="cursor-pointer font-semibold"
                 onClick={closeMenu}
               >
                 Ask doubt
@@ -481,7 +370,7 @@ const Navbar = ({ toggleModal }) => {
                 <Button onClick={handleLogout}>Logout</Button>
               </div>
             ) : (
-              <div className=" flex my-5 gap-x-4 items-center">
+              <div className="flex my-5 gap-x-4 items-center">
                 <div>
                   <Button linkto={"/login"} onClick={closeMenu}>
                     Login
