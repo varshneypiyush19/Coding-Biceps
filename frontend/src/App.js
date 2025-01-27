@@ -16,6 +16,7 @@ import QualityAssurance from "./Components/Services/QualityAssurance.jsx";
 import AskDoubt from "./Components/AskDoubt.js";
 import Signup from "./Components/users/Signup.jsx";
 import LoginForm from "./Components/users/Login.jsx";
+import ServicesCardsComponents from "./Components/ServicesCardsComponents.jsx";
 // import Register from "./pages/Register.js";
 // import Login from "./pages/Login.js";
 function App() {
@@ -55,6 +56,7 @@ function App() {
           {/* <Route path="/register" element={<Register />}></Route> */}
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/login" element={<LoginForm />}></Route>
+          <Route path="/service-card-component" element ={<ServicesCardsComponents/>}></Route>
         </Routes>
         <Footer />
       </div>

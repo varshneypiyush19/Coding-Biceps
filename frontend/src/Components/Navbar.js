@@ -8,14 +8,11 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Button from "./common/Button";
 import ProfileDropDown from "./ProfileDropDown";
-import Services from "./Services"; 
-import ServicesCardsComponents from "./ServicesCardsComponents";
 
 const Navbar = ({ toggleModal }) => {
   const [shake, setShake] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [toggleMenu, setToggleMenu] = useState(false);
-  const [showServices, setShowServices] = useState(false); // State to toggle services
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -73,7 +70,6 @@ const Navbar = ({ toggleModal }) => {
           </li>
           <li
             className="cursor-pointer flex items-center gap-x-1"
-            onClick={() => toggleDropdown("Know AKS")}
           >
             <span className="hover:text-blue-100 font-semibold">
               <NavLink
@@ -86,10 +82,15 @@ const Navbar = ({ toggleModal }) => {
           </li>
           <li
             className="cursor-pointer flex items-center gap-x-1"
-            onClick={() => setShowServices(!showServices)} // Toggle services
           >
-            <span className="hover:text-blue-100 font-semibold">Services</span>
-            <IoIosArrowDown />
+            <span className="hover:text-blue-100 font-semibold">
+              <NavLink
+                to="/service-card-component"
+                className="p-2 hover:text-blue-100"
+              >
+                Services
+              </NavLink>
+            </span>
           </li>
           <li
             className="cursor-pointer flex items-center gap-x-1"
@@ -149,18 +150,6 @@ const Navbar = ({ toggleModal }) => {
         <div className="hidden lg:flex">{<ProfileDropDown />} </div>
       </div>
 
-      {/* Services Page */}
-      {showServices && (
-        <div className="absolute top-16 w-[90%] h-[80vh] rounded-md bg-white z-20 overflow-auto transition-all duration-1000 linear">
-          <button
-            className="absolute top-4 right-4 text-2xl"
-            onClick={() => setShowServices(false)}
-          >
-            <FaTimes />
-          </button>
-          <ServicesCardsComponents onClose={() => setShowServices(false)} />
-        </div>
-      )}
 
       {/* Responsive part mobile version */}
       <div
@@ -229,92 +218,19 @@ const Navbar = ({ toggleModal }) => {
               )}
             </div>
           </li>
-          <li className="flex flex-col">
-            <div
-              className="hover:text-blue-100 cursor-pointer flex items-center gap-x-1"
-              onClick={() => toggleDropdown("Services")}
-            >
-              <span className="font-semibold">Services</span>
-              <IoIosArrowDown />
-            </div>
-            <div>
-              {openDropdown === "Services" && (
-                <ul className="shadow-lg rounded-md p-2 mt-2 bg-white">
-                  <li>
-                    <NavLink
-                      to="/ui-ux"
-                      className="p-2 hover:text-blue-100"
-                      onClick={closeMenu}
-                    >
-                      UI/UX
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/technology"
-                      className="p-2 hover:text-blue-100"
-                      onClick={closeMenu}
-                    >
-                      Technology
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/app-development"
-                      className="p-2 hover:text-blue-100"
-                      onClick={closeMenu}
-                    >
-                      App Development
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/web-development"
-                      className="p-2 hover:text-blue-100"
-                      onClick={closeMenu}
-                    >
-                      Web Development
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/digital-marketing"
-                      className="p-2 hover:text-blue-100"
-                      onClick={closeMenu}
-                    >
-                      Digital Marketing
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/quality-assurance"
-                      className="p-2 hover:text-blue-100"
-                      onClick={closeMenu}
-                    >
-                      Quality Assurance
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/dedicated-resources"
-                      className="p-2 hover:text-blue-100"
-                      onClick={closeMenu}
-                    >
-                      Dedicated Resources
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/ecommerce"
-                      className="p-2 hover:text-blue-100"
-                      onClick={closeMenu}
-                    >
-                      Ecommerce
-                    </NavLink>
-                  </li>
-                </ul>
-              )}
-            </div>
+         
+          <li
+            className="cursor-pointer flex items-center "
+            onClick={closeMenu}
+          >
+            <span className="hover:text-blue-100 font-semibold">
+              <NavLink
+                to="/service-card-component"
+                className=" hover:text-blue-100"
+              >
+                Services
+              </NavLink>
+            </span>
           </li>
           <li className="flex flex-col">
             <div

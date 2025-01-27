@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaPencilAlt, FaLightbulb, FaMobileAlt, FaCode, FaBullhorn, FaChartLine, FaUser, FaPaintBrush } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import useOnClickOutside from './hooks/useOnClickOutside';// Import the custom hook
+import herosectionimage from "../assets/serviceimage.jpg";
+import { FaChevronDown } from 'react-icons/fa';
+import Services from './Services';
+
 
 const services = [
   { icon: <FaPencilAlt />, title: 'UI/UX', link: "/ui-ux", description: 'This is why it’s important to enhance user experience by working on the interface...' },
@@ -14,59 +17,26 @@ const services = [
   { icon: <FaPaintBrush />, title: 'Branding', link: "/ecommerce", description: 'A brand’s identity is connected with the way it...' },
 ];
 
-const ServicesCardsComponents = ({ onClose }) => {
-  const [pageVisible, setPageVisible] = useState(false);
-  const [iconsVisible, setIconsVisible] = useState(false);
+const ServicesCardsComponents = () => {
   const navigate = useNavigate();
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    setPageVisible(true);
-    const timer = setTimeout(() => {
-      setIconsVisible(true);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Use the custom hook to detect clicks outside the component
-  useOnClickOutside(containerRef, onClose);
-
-  const handleCardClick = (link) => {
-    navigate(link);
-    onClose();
-  };
-
   return (
-    <div
-      ref={containerRef}
-      className={`py-12 bg-gray-100  flex items-center justify-center rounded-md transition-opacity h-full duration-1000 ease-in-out ${
-        pageVisible ? 'opacity-100' : 'opacity-0'
-      }`}
-    >
-      <div className='w-10/12'>
-        <h2 className="text-3xl font-bold text-center text-blue-300 mb-8">OUR SERVICES</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className={`p-6 rounded-lg shadow-lg transform transition-all duration-700 hover:bg-blue-400 hover:text-white group cursor-pointer ${
-                iconsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-              onClick={() => handleCardClick(service.link)}
-            >
-              <div className="flex justify-center items-center mb-4">
-                <div className="text-4xl bg-richblack-25 p-3 rounded-full text-blue-200 transition-all duration-700 ease-in-out group-hover:bg-white group-hover:rounded-md">
-                  {service.icon}
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold text-center mb-2">{service.title}</h3>
-              <p className="text-center">{service.description}</p>
+
+    <div>
+        <div
+          className="relative h-[70vh] bg-cover bg-center z-0"
+          style={{ backgroundImage: `url(${herosectionimage})` }}
+        >
+          <div className="absolute inset-0  flex flex-col  items-center text-white">
+             <div className='flex flex-col items-center justify-center mt-28 gap-y-9'>
+            <h1 className="text-2xl md:text-4xl lg:text-6xl  font-bold mb-4 ">Wanna Superchage Your Website?</h1>
+            <p className="text-xl md:text-3xl lg:text-4xl font-bold mb-4">Explore Coding-Biceps Expert Services</p>
             </div>
-          ))}
+            <div className="absolute bottom-10 animate-bounce">
+              <FaChevronDown size={30} />
+            </div>
+          </div>
         </div>
-      </div>
+    <div>{<Services/>}</div>
     </div>
   );
 };
