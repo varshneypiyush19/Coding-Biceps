@@ -8,9 +8,9 @@ import Contactus from "./Components/Contactus";
 import Technology from "./Components/Services/Technology";
 import WebDevelopment from "./Components/Services/WebDevelopment";
 import DigitalMarketing from "./Components/Services/DigitalMarketing";
-import Footer from "./Components/Footer.js";
 import Clientspage from "./pages/Clientspage.js";
 import Team from "./pages/Team.js";
+import Footer from "./Components/Footer/Footer.jsx";
 import GetinTouch from "./Components/GetinTouch.jsx";
 import QualityAssurance from "./Components/Services/QualityAssurance.jsx";
 import AskDoubt from "./Components/AskDoubt.js";
@@ -56,7 +56,10 @@ function App() {
           {/* <Route path="/register" element={<Register />}></Route> */}
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/login" element={<LoginForm />}></Route>
-          <Route path="/service-card-component" element ={<ServicesCardsComponents/>}></Route>
+          <Route
+            path="/service-card-component"
+            element={<ServicesCardsComponents />}
+          ></Route>
         </Routes>
         <Footer />
       </div>
