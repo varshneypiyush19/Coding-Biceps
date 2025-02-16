@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import BookingUI from "./Booking";
+import ConfirmationForm from "./ConfirmationForm";
 
 const AskDoubt = () => {
   const [isYearly, setIsYearly] = useState(false);
@@ -17,13 +19,33 @@ const AskDoubt = () => {
     },
   };
 
+  const [step, setStep] = useState(1);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(null);
   return (
-    <div className="bg-gray-100 py-16">
+    <div className="bg-richblue-100 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
             Ask Doubt
-          </h2>
+          </h2>{" "}
+          <div className="flex flex-col items-center  min-h-screen p-6 md:p-12">
+            {step === 1 ? (
+              <BookingUI
+                setStep={setStep}
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
+                selectedTime={selectedTime}
+                setSelectedTime={setSelectedTime}
+              />
+            ) : (
+              <ConfirmationForm
+                setStep={setStep}
+                selectedDate={selectedDate}
+                selectedTime={selectedTime}
+              />
+            )}
+          </div>
           {/* <p className="mt-4 text-lg text-gray-600">
             Choose the best plan that fits your needs. 1 doubt free in every
             plan!
