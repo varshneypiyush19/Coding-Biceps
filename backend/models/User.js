@@ -4,7 +4,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-
   lastName: {
     type: String,
   },
@@ -27,6 +26,12 @@ const userSchema = new mongoose.Schema({
   token: {
     type: String
   },
+  bookings: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Booking", // Referencing the Booking model
+    },
+  ],
 }, {timestamps:true});
 
 module.exports = mongoose.model('User', userSchema);

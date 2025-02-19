@@ -22,6 +22,7 @@ const AskDoubt = () => {
   const [step, setStep] = useState(1);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
+  const [selectedTimeZone , setSelectedTimezone] = useState(null);
   return (
     <div className="bg-richblue-100 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,12 +38,16 @@ const AskDoubt = () => {
                 setSelectedDate={setSelectedDate}
                 selectedTime={selectedTime}
                 setSelectedTime={setSelectedTime}
+                selectedTimeZone = {selectedTimeZone}
+                setSelectedTimezone = {setSelectedTimezone}
               />
             ) : (
+               
               <ConfirmationForm
                 setStep={setStep}
                 selectedDate={selectedDate}
                 selectedTime={selectedTime}
+                selectedTimeZone = {selectedTimeZone}
               />
             )}
           </div>

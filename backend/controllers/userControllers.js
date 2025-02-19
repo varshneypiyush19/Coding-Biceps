@@ -115,3 +115,19 @@ exports.login = async (req, res) => {
         });
     }
 };
+
+exports.checkUser = async (req, res) => {
+    try {
+      const { email } = req.body;
+      const user = await User.findOne({ email });
+  
+      if (!user) {
+        return res.json({ exists: false });
+      }
+      res.json({ exists: true });
+    } catch (error) {
+      console.error("Error checking user:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  };
+  

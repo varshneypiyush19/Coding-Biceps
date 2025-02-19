@@ -4,18 +4,29 @@ require("dotenv").config();
 
 const contactusroute = require("./routes/Contactus");
 const userRoutes = require("./routes/userRoutes");
-
+const bookingRoute = require("./routes/bookingRoute")
+const paymentRoutes = require("./routes/paymentRoutes")
 const app = express();
-
+app.use(cors());
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 // Allow all origins
-app.use(cors());
+
 
 app.use('/api/v1', contactusroute);
 app.use('/api/v1', userRoutes);
+app.use('/api/v1' , bookingRoute)
+app.use('/api/v1' ,paymentRoutes)
+
+app.get("/api/v1/getkey", (req, res) => {
+  res.status(200).json({ key: process.env.RAZORPAY_KEY });
+});
+
 
 const dbConnect = require("./config/database");
 dbConnect();
