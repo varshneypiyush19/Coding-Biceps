@@ -1,7 +1,16 @@
 const User = require("../models/User")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const BlacklistToken = require("../models/blacklistToken.model")
+const {validationResult }= require('express-validator')
 exports.signup = async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({
+            success: false,
+            message: errors.array()[0].msg,
+        });
+    }
     try {
         const {
             firstName,
@@ -23,12 +32,7 @@ exports.signup = async (req, res) => {
                 message: "All fields are required",
             });
         }
-        if (password !== confirmpassword) {
-            return res.status(400).json({
-                success: false,
-                message: "Password and Confirm Password does not matched",
-            });
-        }
+
         const existinguser = await User.findOne({ phone });
         if (existinguser) {
             return res.status(400).json({
@@ -36,7 +40,14 @@ exports.signup = async (req, res) => {
                 message: "user is already registered",
             });
         }
-
+        if (password !== confirmpassword) {
+            return res.status(400).json({
+                success: false,
+                message: "Password and Confirm Password does not matched",
+            });
+        }
+      
+      
         const hashedpassword = await bcrypt.hash(password, 10);
         const user = await User.create({
             firstName,
@@ -48,10 +59,12 @@ exports.signup = async (req, res) => {
         });
         // console.log("hello");
         // console.log(user);
+        const token = user.generateAuthToken();
         return res.status(200).json({
             success: true,
             messgae: "User registered Successfully",
-            user,
+            token,
+            user
         });
     } catch (error) {
         console.log(error);
@@ -66,6 +79,10 @@ exports.signup = async (req, res) => {
 
 exports.login = async (req, res) => {
     try {
+        const errors= validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json({errors:errors.array()})
+    }
         const { phone, password } = req.body;
         if (!phone || !password) {
             return res.status(403).json({

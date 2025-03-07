@@ -37,6 +37,10 @@ const bookingSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  instructor: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Instructor",
+  },
 });
 
 module.exports = mongoose.model("Booking", bookingSchema);
