@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt')
-const userSchema = new mongoose.Schema({
+const InstructorSchema = new mongoose.Schema({
   firstName: {
     type: String,
     required: true
@@ -28,16 +26,21 @@ const userSchema = new mongoose.Schema({
   token: {
     type: String
   },
-  bookings: [
+  resume:{
+    type:String,
+    // required:true
+  },
+  students: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Booking", // Referencing the Booking model
+      ref: "User", 
     },
   ],
-}, {timestamps:true})
+  approved: {
+    type: Boolean,
+    default: false,
+  },
+}, {timestamps:true});
 
-
- 
-
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Instructor', InstructorSchema);
 

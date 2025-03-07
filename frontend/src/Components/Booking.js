@@ -291,7 +291,7 @@ const timeSlots = [
 ];
 
 const timezones = [
-  { label: "(GMT+5:30) IST - India", offset: 4 },
+  { label: "(GMT+5:30) IST - India", offset: 5.5 },
   { label: "(GMT-5:00) EST - Eastern Time", offset: -5 },
   { label: "(GMT+1:00) CET - Central Europe", offset: 1 },
   { label: "(GMT+8:00) SGT - Singapore", offset: 8 },
@@ -303,10 +303,12 @@ const BookingUI = ({
   setSelectedDate,
   selectedTime,
   setSelectedTime,
+  selectedTimezone,
+  setSelectedTimezone,
 }) => {
   const [weekends, setWeekends] = useState(getUpcomingWeekends());
-  const [selectedTimezone, setSelectedTimezone] = useState(timezones[0]);
 
+  // Set initial values if none are selected
   useEffect(() => {
     if (!selectedDate) {
       setSelectedDate(weekends[0]);
@@ -314,7 +316,10 @@ const BookingUI = ({
     if (!selectedTime) {
       setSelectedTime(timeSlots[0]);
     }
-  }, [weekends, selectedDate, selectedTime, setSelectedDate, setSelectedTime]);
+    if (!selectedTimezone) {
+      setSelectedTimezone(timezones[0]);
+    }
+  }, [weekends, selectedDate, selectedTime, setSelectedDate, setSelectedTime, selectedTimezone, setSelectedTimezone]);
 
   // Move through weekends using left/right buttons
   const shiftWeekends = (direction) => {
@@ -332,7 +337,7 @@ const BookingUI = ({
   const convertTime = (time) => {
     const [hour, minute, period] = time.match(/(\d+):(\d+) (AM|PM)/).slice(1);
     let hour24 = period === "PM" ? (parseInt(hour) % 12) + 12 : parseInt(hour);
-    let convertedHour = hour24 + selectedTimezone.offset;
+    let convertedHour = hour24 + (selectedTimezone?.offset || 0); // Use fallback offset if selectedTimezone is undefined
 
     if (convertedHour >= 24) convertedHour -= 24;
     if (convertedHour < 0) convertedHour += 24;
@@ -375,7 +380,7 @@ const BookingUI = ({
                   className={`flex flex-col rounded-md border-richblue-200 items-center px-3 py-2 text-sm ${
                     selectedDate === date
                       ? "bg-richblue-200 text-white" // Reciprocal colors when selected
-                      : "  text-black"
+                      : "text-black"
                   }`}
                 >
                   <span className="text-xs ">{format(date, "EEE")}</span>
@@ -399,7 +404,7 @@ const BookingUI = ({
                 className={`flex flex-col rounded-md border-richblue-200 items-center px-3 py-2 text-sm  ${
                   selectedTime === time
                     ? "bg-richblue-200 text-white" // Reciprocal colors when selected
-                    : " text-black"
+                    : "text-black"
                 }`}
               >
                 {convertTime(time)}
@@ -411,7 +416,7 @@ const BookingUI = ({
           <h3 className="text-lg font-bold mt-6">Timezone</h3>
           <select
             className="w-full p-2 border rounded-md"
-            value={selectedTimezone.label}
+            value={selectedTimezone?.label || ''}
             onChange={(e) =>
               setSelectedTimezone(
                 timezones.find((tz) => tz.label === e.target.value)

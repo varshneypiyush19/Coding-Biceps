@@ -17,6 +17,7 @@ import AskDoubt from "./Components/AskDoubt.js";
 import Signup from "./Components/users/Signup.jsx";
 import LoginForm from "./Components/users/Login.jsx";
 import ServicesCardsComponents from "./Components/ServicesCardsComponents.jsx";
+import PaymentSuccess from "./Components/PaymentSuccess.jsx";
 // import Register from "./pages/Register.js";
 // import Login from "./pages/Login.js";
 function App() {
@@ -29,9 +30,8 @@ function App() {
   return (
     <div className="relative">
       <div
-        className={`transition-all duration-300 ${
-          isModalOpen ? "blur-md fixed" : ""
-        }`}
+        className={`transition-all duration-300 ${isModalOpen ? "blur-md fixed" : ""
+          }`}
       >
         <Navbar toggleModal={toggleModal} />
         <Routes>
@@ -60,6 +60,7 @@ function App() {
             path="/service-card-component"
             element={<ServicesCardsComponents />}
           ></Route>
+          <Route path="/paymentsuccess" element={<PaymentSuccess />}> </Route>
         </Routes>
         <Footer />
       </div>
