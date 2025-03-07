@@ -1,28 +1,28 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import BookingUI from "./Booking";
 import ConfirmationForm from "./ConfirmationForm";
 
 const AskDoubt = () => {
-  const [isYearly, setIsYearly] = useState(false);
+  // const [isYearly, setIsYearly] = useState(false);
 
-  const pricing = {
-    monthly: {
-      student: 29,
-      intern: 50,
-      experienced: 100,
-    },
-    yearly: {
-      student: 250,
-      intern: 450,
-      experienced: 900,
-    },
-  };
+  // const pricing = {
+  //   monthly: {
+  //     student: 29,
+  //     intern: 50,
+  //     experienced: 100,
+  //   },
+  //   yearly: {
+  //     student: 250,
+  //     intern: 450,
+  //     experienced: 900,
+  //   },
+  // };
 
   const [step, setStep] = useState(1);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
-  const [selectedTimeZone , setSelectedTimezone] = useState(null);
+  const [selectedTimeZone, setSelectedTimezone] = useState(null);
   return (
     <div className="bg-richblue-100 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,16 +38,15 @@ const AskDoubt = () => {
                 setSelectedDate={setSelectedDate}
                 selectedTime={selectedTime}
                 setSelectedTime={setSelectedTime}
-                selectedTimeZone = {selectedTimeZone}
-                setSelectedTimezone = {setSelectedTimezone}
+                selectedTimeZone={selectedTimeZone}
+                setSelectedTimezone={setSelectedTimezone}
               />
             ) : (
-               
               <ConfirmationForm
                 setStep={setStep}
                 selectedDate={selectedDate}
                 selectedTime={selectedTime}
-                selectedTimeZone = {selectedTimeZone}
+                selectedTimeZone={selectedTimeZone}
               />
             )}
           </div>

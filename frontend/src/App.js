@@ -18,6 +18,11 @@ import Signup from "./Components/users/Signup.jsx";
 import LoginForm from "./Components/users/Login.jsx";
 import ServicesCardsComponents from "./Components/ServicesCardsComponents.jsx";
 import PaymentSuccess from "./Components/PaymentSuccess.jsx";
+import { SelectMentor } from "./Components/Selectmentor";
+import MainLogin from "./pages/MainLogin.js";
+import MentorLogin from "./Components/mentor/LoginMentor.js";
+import MainRegister from "./pages/MainRegister.js";
+import SignupMentor from "./Components/mentor/SignupMentor.js";
 // import Register from "./pages/Register.js";
 // import Login from "./pages/Login.js";
 function App() {
@@ -30,8 +35,9 @@ function App() {
   return (
     <div className="relative">
       <div
-        className={`transition-all duration-300 ${isModalOpen ? "blur-md fixed" : ""
-          }`}
+        className={`transition-all duration-300 ${
+          isModalOpen ? "blur-md fixed" : ""
+        }`}
       >
         <Navbar toggleModal={toggleModal} />
         <Routes>
@@ -51,16 +57,25 @@ function App() {
             path="/quality-assurance"
             element={<QualityAssurance />}
           ></Route>
-          <Route path="/doubt" element={<AskDoubt />}></Route>
+          <Route path="/select-mentor" element={<SelectMentor />} />
+          <Route path="/select-mentor/:id" element={<AskDoubt />} />
+          {/* <Route path="/doubt" element={<AskDoubt />}></Route> */}
           {/* <Route path="/login" element={<Login />}></Route> */}
           {/* <Route path="/register" element={<Register />}></Route> */}
-          <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/login" element={<LoginForm />}></Route>
+          <Route path="/signup" element={<MainRegister />}></Route>
+          <Route path="/usersignup" element={<Signup />}></Route>
+          <Route path="/mentorsignup" element={<SignupMentor />}></Route>
+
+          <Route path="/login" element={<MainLogin />}></Route>
+          <Route path="/userlogin" element={<LoginForm />}></Route>
+          <Route path="/mentorlogin" element={<MentorLogin />}></Route>
           <Route
             path="/service-card-component"
             element={<ServicesCardsComponents />}
           ></Route>
-          <Route path="/paymentsuccess" element={<PaymentSuccess />}> </Route>
+          <Route path="/paymentsuccess" element={<PaymentSuccess />}>
+            {" "}
+          </Route>
         </Routes>
         <Footer />
       </div>

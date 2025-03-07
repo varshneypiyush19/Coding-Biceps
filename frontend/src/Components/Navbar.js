@@ -68,9 +68,7 @@ const Navbar = ({ toggleModal }) => {
               Home
             </NavLink>
           </li>
-          <li
-            className="cursor-pointer flex items-center gap-x-1"
-          >
+          <li className="cursor-pointer flex items-center gap-x-1">
             <span className="hover:text-blue-100 font-semibold">
               <NavLink
                 to="/know-coding-biceps"
@@ -80,9 +78,7 @@ const Navbar = ({ toggleModal }) => {
               </NavLink>
             </span>
           </li>
-          <li
-            className="cursor-pointer flex items-center gap-x-1"
-          >
+          <li className="cursor-pointer flex items-center gap-x-1">
             <span className="hover:text-blue-100 font-semibold">
               <NavLink
                 to="/service-card-component"
@@ -129,7 +125,7 @@ const Navbar = ({ toggleModal }) => {
               }`}
             >
               <NavLink
-                to="/doubt"
+                to="/select-mentor"
                 className="cursor-pointer font-semibold"
                 onClick={closeMenu}
               >
@@ -149,7 +145,6 @@ const Navbar = ({ toggleModal }) => {
         </button>
         <div className="hidden lg:flex">{<ProfileDropDown />} </div>
       </div>
-
 
       {/* Responsive part mobile version */}
       <div
@@ -218,11 +213,8 @@ const Navbar = ({ toggleModal }) => {
               )}
             </div>
           </li>
-         
-          <li
-            className="cursor-pointer flex items-center "
-            onClick={closeMenu}
-          >
+
+          <li className="cursor-pointer flex items-center " onClick={closeMenu}>
             <span className="hover:text-blue-100 font-semibold">
               <NavLink
                 to="/service-card-component"
